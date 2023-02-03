@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main(){
+    char a[50][20];
+    int dem[50]={0};
+    char string[100];
+    int n;
+    gets(string);
+    char *token=strtok(string," ");
+    while(token!=NULL){
+        int check=0;
+        for(int i=0;i<n;i++){
+            if(strcmp(token,a[i])==0){
+                dem[i]++;
+                check=1;
+                break;
+            }
+        }
+        if(!check){
+            strcpy(a[n],token);
+            dem[n]=1;
+            n++;
+        }
+    token=strtok(NULL, " ");
+    }
+    for(int i=0;i<n;i++){
+        printf("Tu '%s' xuat hien %d lan.",a[i],dem[i]);
+    }
+}
