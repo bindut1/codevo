@@ -1,0 +1,26 @@
+#include <stdio.h>
+// ham tinh 10000!
+void giaithua(int n){
+	int a[500000], m=1;
+	long long r=0, tmp;
+	a[0]=1;
+	for(int i=2;i<=n;i++){
+		for(int j=0;j<m;j++){
+			tmp=r;
+			r=(a[j]*i+r)/10;
+			a[j]=(a[j]*i+tmp)%10;
+		}
+		while(r>0){
+			a[m]=r%10;
+			m++;
+			r/=10;
+		}
+	}
+	for(int i=m-1;i>=0;i--) printf("%d",a[i]);
+}
+
+int main(){
+	int n;
+	scanf("%d",&n);
+	giaithua(n);
+}
